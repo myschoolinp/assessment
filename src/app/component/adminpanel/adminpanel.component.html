@@ -1,0 +1,85 @@
+
+<div class="toolbar" role="banner">
+  <span>Admin Panel</span>
+  <button (click)="logoutUser()" mat-raised-button color="primary" style="    position: absolute;
+  right: 10px;">Logout</button>
+</div>
+
+<div class="dashboardMain">
+  <mat-form-field style="height: 50px;
+        width: 100%;padding-left: 10px;">
+    <mat-label>Search</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="search" autocomplete="off">
+  </mat-form-field>
+  <div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width:100%">
+
+      <!-- User Column -->
+      <ng-container matColumnDef="userId">
+        <th mat-header-cell *matHeaderCellDef>User Id</th>
+        <td mat-cell *matCellDef="let element"> {{element?.userId}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element?.name}} </td>
+      </ng-container>
+ <!-- Role Column -->
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef> Role </th>
+        <td mat-cell *matCellDef="let element"> {{element?.role}} </td>
+      </ng-container>
+ <!-- Email Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let element;let si=index" style="cursor: pointer;"> {{element?.email}} </td>
+      </ng-container>
+
+      <!-- Mobile Number Column -->
+      <ng-container matColumnDef="mobNumber">
+        <th mat-header-cell *matHeaderCellDef>Mobile No </th>
+        <td mat-cell *matCellDef="let element;let si=index" style="cursor: pointer;"> {{element?.mobNumber}} </td>
+      </ng-container>
+       <!-- Updated Date Column -->
+      <ng-container matColumnDef="updatedDate">
+        <th mat-header-cell *matHeaderCellDef> Updated Date </th>
+        <td mat-cell *matCellDef="let element"> {{element?.updatedDate | date: 'dd-MM-yyyy hh:mm a'}} </td>
+      </ng-container>
+       <!-- Address Column -->
+      <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef>Address</th>
+        <td mat-cell *matCellDef="let element" style="max-width: 115px;"> {{element?.address}} </td>
+      </ng-container>
+       <!-- Edit Column -->
+      <ng-container matColumnDef="Edit">
+        <th mat-header-cell *matHeaderCellDef>Edit</th>
+        <td mat-cell *matCellDef="let element">
+          <a matTooltip="Edit" (click)="addNewUser('update',element)" style="cursor: pointer;">
+            <span class="material-icons">edit</span>
+          </a>
+        </td>
+      </ng-container>
+       <!-- Delete Column -->
+      <ng-container matColumnDef="Delete">
+        <th mat-header-cell *matHeaderCellDef> Delete</th>
+        <td mat-cell *matCellDef="let element">
+          <span matTooltip="Delete" (click)="deleteUser(element)" style="cursor: pointer;"
+            class="material-icons">delete</span>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[20]" showFirstLastButtons></mat-paginator>
+
+  </div>
+  <!-- For adding the New User -->
+  <button mat-mini-fab color="primary" (click)="addNewUser('add','')"
+    style=" position: fixed;right: 20px;bottom: 20px;z-index:999"
+    aria-label="Example icon button with a filter list icon">
+    <mat-icon>add</mat-icon>
+  </button>
+
+
+</div>

@@ -1,0 +1,45 @@
+<form [formGroup]="myForm" (ngSubmit)="submitForm()" novalidate>
+
+      <mat-form-field style="width: 100%;">
+        <input matInput placeholder="userId" formControlName="userId"
+            autocomplete="off">
+      </mat-form-field>
+      <mat-form-field style="width: 100%;">
+        <input matInput placeholder="Password" formControlName="password"
+            autocomplete="off">
+    </mat-form-field>
+    <mat-form-field style="width: 100%;">
+        <input matInput placeholder="Name" formControlName="name"
+            autocomplete="off">
+    </mat-form-field>
+    <mat-form-field style="width: 100%;">
+      <input matInput placeholder="Email" formControlName="email"
+          autocomplete="off">
+  </mat-form-field>
+    <mat-form-field style="width: 100%;">
+      <input matInput placeholder="Address"  formControlName="address"
+          autocomplete="off">
+    </mat-form-field>
+      <mat-form-field style="width: 100%;">
+        <input pattern="[5-9]{1}[0-9]{9}"  matInput placeholder="Mobile Number"  formControlName="mobNumber"
+            autocomplete="off">
+      </mat-form-field>
+      <mat-form-field style="width: 100%;">
+        <mat-label >Select Role</mat-label>
+        <mat-select  formControlName="role" >
+          <mat-option value="Admin">Admin</mat-option>
+          <mat-option value="User">User</mat-option>
+          <mat-option value="Teacher">Teacher</mat-option>
+        </mat-select>
+      </mat-form-field>
+    
+    
+   
+ 
+    <!-- Submit -->
+    <div class="button-wrapper" style="text-align: center;">
+        <button *ngIf="data.status == 'add'" mat-flat-button color="primary">Add</button>
+        <button *ngIf="data.status == 'update'"  mat-flat-button color="primary">Update</button>
+    </div>
+
+</form>

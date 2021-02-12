@@ -1,0 +1,83 @@
+
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+    <span>login</span>
+</div>
+<div class="loginMainCon">
+  <mat-card style="width: 20%;max-width: 300px;min-width: 250px;">
+    <mat-tab-group [(selectedIndex)]="TabIndex" md-stretch-tabs (selectedTabChange)="searchAvailableUser($event);">
+      <!-- ********** FOR LOGIN ********  -->
+      <mat-tab label="Login">
+        <!-- <form class="example-form"> -->
+        <form [formGroup]="LoginForm" (ngSubmit)="loginUser()" novalidate>
+          <div>
+            <mat-form-field class="example-full-width" style="width: 100%;">
+              <mat-label>{{'username' }}</mat-label>
+              <input matInput placeholder="username" value="" formControlName="username" autocomplete="off">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field class="example-full-width" style="width: 100%;">
+              <mat-label>{{'password' }}</mat-label>
+              <input type="password" matInput placeholder="password" formControlName="password" value="" autocomplete="off">
+            </mat-form-field>
+          </div>
+          <!-- Submit -->
+          <div class="button-wrapper" style="text-align: center;">
+            <button mat-raised-button color="primary">{{'Login' }}</button>
+          </div>
+
+        </form>
+        <!-- </form> -->
+      </mat-tab>
+
+      <!-- ********** FOR REGISTRATION ********  -->
+      <mat-tab label="Register">
+        <form #form [formGroup]="myRegisterForm" (ngSubmit)="registerUser()" novalidate>
+       
+          <div>
+            <mat-form-field class="example-full-width" style="width: 100%;">
+              <mat-label>{{'userId' }}</mat-label>
+              <input id="regUserId" matInput placeholder="userId" formControlName="userId" value="" autocomplete="off">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field class="example-full-width" style="width: 100%;">
+              <mat-label>{{'Password' }}</mat-label>
+              <input type="password" matInput placeholder="Password" formControlName="password" value="" autocomplete="off">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field class="example-full-width" style="width: 100%;">
+              <mat-label>{{'Name'}}</mat-label>
+              <input matInput placeholder="name" formControlName="name" 
+                autocomplete="off">
+            </mat-form-field>
+            <mat-form-field class="example-full-width" style="width: 100%;">
+              <mat-label>{{'email'}}</mat-label>
+              <input matInput placeholder="email" formControlName="email" 
+                autocomplete="off">
+            </mat-form-field>
+            <mat-form-field class="example-full-width" style="width: 100%;">
+              <mat-label>{{'address'}}</mat-label>
+              <input matInput placeholder="address" formControlName="address" 
+                autocomplete="off">
+            </mat-form-field>
+            <mat-form-field class="example-full-width" style="width: 100%;">
+              <mat-label>{{'Mobile No'}}</mat-label>
+              <input matInput pattern="[5-9]{1}[0-9]{9}" placeholder="mobNumber" formControlName="mobNumber" 
+                autocomplete="off">
+            </mat-form-field>
+  
+          </div>
+          <div style="text-align: center;margin-bottom: 5px;">
+            <button mat-raised-button>
+              {{'Register'}}
+            </button>
+          </div>
+        </form>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card>
+</div>
+
